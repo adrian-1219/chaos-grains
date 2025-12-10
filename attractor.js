@@ -47,8 +47,8 @@ function draw() {
     background(0);
     // const col = document.getElementById("attractorDiv");
     b = map(scrollPos, 0, col.clientHeight / 2, 0.19, 0.3);
-    if (b > 0.35) {
-        b = 0.35
+    if (b > 0.33) {
+        b = 0.33
     }
     verticalOffset = scrollPos - col.clientHeight / 3.8;
     for (let i = 0; i < n; i++) {
@@ -95,9 +95,6 @@ function draw() {
         // white particles
         stroke(255);
         strokeWeight(2);
-        // beginShape(POINTS);
-        // vertex(sx, sy + verticalOffset, sz);
-        // endShape();
         point(sx, sy + verticalOffset, sz);
     }
 }
