@@ -20,6 +20,7 @@ let height = 1500;
 let horizontalOffset = 10;
 
 function setup() {
+    pixelDensity(1);
     const col = document.getElementById("attractorDiv");
     canvas = createCanvas(col.clientWidth - colFix, col.clientHeight, WEBGL);
     canvas.parent("attractorDiv");
