@@ -1,0 +1,27 @@
+body {
+    background-color: black;
+    overscroll-behavior: none;
+}
+
+.navbar-brand {
+    padding-left: 2%;
+}
+
+h1,
+.navbar-brand {
+    padding-top: 20px;
+    font-family: "Bitcount Prop Single", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings:
+        "slnt" 0,
+        "CRSV" 0.5,
+        "ELSH" 0,
+        "ELXP" 0;
+}
+
+.navbar-brand {
+    padding-top: 0px;
+    font-size: xx-large;
+}
