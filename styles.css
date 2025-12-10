@@ -8,8 +8,8 @@ body {
 }
 
 h1,
+h2,
 .navbar-brand {
-    padding-top: 20px;
     font-family: "Bitcount Prop Single", system-ui;
     font-optical-sizing: auto;
     font-weight: 300;
@@ -21,6 +21,10 @@ h1,
         "ELXP" 0;
 }
 
+h1 {
+    padding-top: 20px;
+}
+
 .navbar-brand {
     padding-top: 0px;
     font-size: xx-large;
@@ -29,4 +33,15 @@ h1,
 #attractorDiv {
     width: 100vw;
     height: 200vh;
+}
+
+a {
+    color: #d63384;
+}
+
+.no-select {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }

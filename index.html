@@ -18,12 +18,12 @@
 <body>
     <nav class="navbar navbar-dark bg-black">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <div class="navbar-brand no-select">
                 Chaos Grains
-            </a>
-            <a class="navbar-brand" href="#">
+            </div>
+            <div class="navbar-brand no-select">
                 by Adrian Lam
-            </a>
+            </div>
         </div>
     </nav>
     <div class="bg-black text-white" id="attractorDiv"></div>
@@ -36,14 +36,33 @@
 
                     <h1>Context, Concept and Aims</h1>
                     <p>At the heart of the instrument is a chaos attractor. Chaos attractors are a set of states in a chaotic system that the system's trajectory will stay within. The system's overall behaviour remains within a predictable shape, but the exact path taken is unpredictable over the long term. One famous example of a chaos attractor is the Lorenz attractor, developed to understand atmospheric convection, and is also often associated with the idea of the butterfly effect. Apart from modelling physical behaviour, chaos attractors can also be utilized in musical applications by introducing controlled chaos. </p>
-                    <!-- lorenz attractor here and maybe the compsitional tool screenshot from the paper as well -->
-                    <p>In previous research, there has been three main musical applications of chaos attractors. The first being a compositional tool. </p> <!-- TODO -->
+                    <!-- TODO: lorenz attractor image here and maybe the compsitional tool screenshot from the paper as well -->
+                    <p>In previous research, there has been three main musical applications of chaos attractors. The first being a compositional tool. </p> <!-- TODO: finish this part -->
                     <p>The inital aim of this project was to utilize all three of the mentioned musical applications of chaos attractors into one live improvisational instrument. However, due to challenges with mapping when utilized as a compositional tool, it was changed to control a granular engine instead. The final instrument uses the Thomas attractor to synthesize sound, modulate effects, and control a granular engine.</p>
 
                     <h1>Design Process, Technical and Creative Details</h1>
-                    To start off the project, I implemented the Thomas attractor in Max MSP using gen~. This allowed me to generate sound by patching one of the x, y, or z vectors into the ezdac~.
+                    <h2>Sound Synthesis With Chaos Attractor</h2>
+                    <p>To start off the project, I implemented the Thomas attractor in Max MSP using gen~ following <a target="_blank" href="https://youtu.be/EwunJYwxNcs?si=UZiZ7K9q_zJfMeGQ">this tutorial</a> by Umut Eldem (2023). The exact differential equations for the Thomas attractor can be found <a target="_blank" href="https://en.wikipedia.org/wiki/Thomas%27_cyclically_symmetric_attractor">here</a>. This allowed me to generate sound by patching one of the chaos attractor's x, y, or z vectors into the ezdac~ object. The pitch and timbre of the sound can be controlled by adjusting the b and dt parameters in the differential equations. The parameter dt changes how fast the particle in the chaos attractor moves, which changes the pitch, and the parameter b changes the shape of the chaos attractor, which changes both pitch and timbre. I then modified the patch to use mc.gen~ instead of gen~, with 50 channels, to generate a more interesting and textured sound. The resulting oscillator sub patch became the basis for the sound synthesis aspect of the instrument. </p>
 
-                    <h1>Critical Analysis</h1>
+                    <h2>Chaos Attractor Visuals</h2>
+                    <p>Since the chaos attractor is a crucial part of the instrument, I wanted to visualize it so that I could see how the different parameters are affecting the chaos attractor, and how the shape of the chaos attractor affects the sound. This could be done by patching the vectors to the scope~ object. However, the scope~ object only allows two inputs and therefore was not able to visualize the entire chaos attractor in three dimensions. To solve this issue, I used Jitter, specifically jit.gen, to implement the visuals in three dimensions using the same b and dt parameters that are being fed into the mc.gen~ object. </p>
+
+                    <!-- TODO: effects modulator -->
+                    <h2>Modulating Effects With Chaos Attractor</h2>
+                    <p>The patch sounded a bit dry so I added two delays, the first being a modulated delay and the second one a normal delay. </p>
+
+                    <!-- TODO: initial sketches and hardware prototype -->
+                    <h2>Initial Sketches And Hardware Prototype</h2>
+                    <p>Now that I had an interesting Max patch, I had to come up with a hardware interface to control it. This is when I came across <a target="_blank" href="https://www.youtube.com/watch?v=D7n-BYKB0is">this video</a> by Carl Hudson (2012) where they use a plasma ball to send MIDI data to a Prophet 8 synthesizer and control its filter. </p>
+
+                    <!-- TODO: limitations of first prototype -->
+                    <!-- TODO: granular engine -->
+                    <!-- TODO: building the final physical instrument -->
+                    <!-- TODO: final tweaks before performance -->
+
+
+                    <h1>Reflection And Future Directions</h1>
+                    <p></p>
                 </div>
             </div>
         </div>
