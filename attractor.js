@@ -9,7 +9,7 @@ let dt = 0.2;
 let b = 0.19;
 
 let pts = [];
-let n = 2500;
+let n = 1500;
 
 let col;
 
