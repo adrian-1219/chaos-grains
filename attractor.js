@@ -44,6 +44,9 @@ function draw() {
     background(0);
     const col = document.getElementById("attractorDiv");
     b = map(scrollPos, 0, col.clientHeight / 2, 0.19, 0.3);
+    if (b > 0.35) {
+        b = 0.35
+    }
     verticalOffset = scrollPos - col.clientHeight / 3.8;
     for (let i = 0; i < n; i++) {
         x = pts[i][0];
