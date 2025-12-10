@@ -11,6 +11,8 @@ let b = 0.19;
 let pts = [];
 let n = 2500;
 
+let col;
+
 let colFix = 15;
 let attractorScale = 0.3;
 
@@ -21,7 +23,7 @@ let horizontalOffset = 10;
 
 function setup() {
     pixelDensity(1);
-    const col = document.getElementById("attractorDiv");
+    col = document.getElementById("attractorDiv");
     canvas = createCanvas(col.clientWidth - colFix, col.clientHeight, WEBGL);
     canvas.parent("attractorDiv");
     for (let i = 0; i < n; i++) {
@@ -43,7 +45,7 @@ function windowResized() {
 
 function draw() {
     background(0);
-    const col = document.getElementById("attractorDiv");
+    // const col = document.getElementById("attractorDiv");
     b = map(scrollPos, 0, col.clientHeight / 2, 0.19, 0.3);
     if (b > 0.35) {
         b = 0.35
@@ -93,8 +95,9 @@ function draw() {
         // white particles
         stroke(255);
         strokeWeight(2);
-        beginShape(POINTS);
-        vertex(sx, sy + verticalOffset, sz);
-        endShape();
+        // beginShape(POINTS);
+        // vertex(sx, sy + verticalOffset, sz);
+        // endShape();
+        point(sx, sy + verticalOffset, sz);
     }
 }
