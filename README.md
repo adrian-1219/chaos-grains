@@ -1,1 +1,3 @@
 # Chaos Grains
+
+Chaos Grains is a Digital Music Instrument (DMI) made as part of the Interactive Digital Multimedia Techniques module at Queen Mary, University of London. The instrument explores the idea of creating music with chaos. A plasma ball interface is used to control the parameters of a chaos attractor implemented in Max MSP, which is then used as an oscillator to generate sound, an effects modulator, and to control a granular engine.
