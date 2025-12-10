@@ -10,8 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -32,16 +31,16 @@
             <div class="row">
                 <div class="col-12">
                     <h1>Chaos Grains</h1>
-                    Chaos Grains is a Digital Music Instrument (DMI) made as part of the Interactive Digital Multimedia
-                    Techniques module at Queen Mary, University of London. The instrument explores the idea of creating
-                    music with
-                    chaos. A plasma ball interface is used to control the parameters of a chaos attractor implemented in
-                    Max MSP,
-                    which is then used as an oscillator to generate sound, an effects modulator, and to control a
-                    granular engine.
+                    <p>Chaos Grains is a Digital Music Instrument (DMI) made as part of the Interactive Digital Multimedia Techniques module at Queen Mary, University of London. The instrument explores the idea of creating music with chaos. A plasma ball interface is used to control the parameters of a chaos attractor implemented in Max MSP, which is then used as an oscillator to generate sound, an effects modulator, and to control a granular engine.</p>
+
                     <h1>Context, Concept and Aims</h1>
-                    The
+                    <p>At the heart of the instrument is a chaos attractor. Chaos attractors are a set of states in a chaotic system that the system's trajectory will stay within. The system's overall behaviour remains within a predictable shape, but the exact path taken is unpredictable over the long term. One famous example of a chaos attractor is the Lorenz attractor, developed to understand atmospheric convection, and is also often associated with the idea of the butterfly effect. Apart from modelling physical behaviour, chaos attractors can also be utilized in musical applications by introducing controlled chaos. </p>
+                    <!-- lorenz attractor here and maybe the compsitional tool screenshot from the paper as well -->
+                    <p>In previous research, there has been three main musical applications of chaos attractors. The first being a compositional tool. </p> <!-- TODO -->
+                    <p>The inital aim of this project was to utilize all three of the mentioned musical applications of chaos attractors into one live improvisational instrument. However, due to challenges with mapping when utilized as a compositional tool, it was changed to control a granular engine instead. The final instrument uses the Thomas attractor to synthesize sound, modulate effects, and control a granular engine.</p>
+
                     <h1>Design Process, Technical and Creative Details</h1>
+                    To start off the project, I implemented the Thomas attractor in Max MSP using gen~. This allowed me to generate sound by patching one of the x, y, or z vectors into the ezdac~.
 
                     <h1>Critical Analysis</h1>
                 </div>

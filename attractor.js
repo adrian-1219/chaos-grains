@@ -17,9 +17,11 @@ let attractorScale = 0.3;
 let scrollPos = 0;
 let height = 1500;
 
+let horizontalOffset = 10;
+
 function setup() {
     const col = document.getElementById("attractorDiv");
-    canvas = createCanvas(col.clientWidth - colFix, height, WEBGL);
+    canvas = createCanvas(col.clientWidth - colFix, col.clientHeight, WEBGL);
     canvas.parent("attractorDiv");
     for (let i = 0; i < n; i++) {
         x = random(-1, 1);
@@ -35,15 +37,14 @@ function setup() {
 function windowResized() {
     const col = document.getElementById("attractorDiv");
 
-    resizeCanvas(col.clientWidth - colFix, height);
+    resizeCanvas(col.clientWidth - colFix, col.clientHeight);
 }
 
 function draw() {
     background(0);
     const col = document.getElementById("attractorDiv");
-    b = map(scrollPos, 0, 1000, 0.19, 0.3);
-    verticalOffset = scrollPos - 400;
-    // verticalOffset = map(scrollPos, 0, 500, -100, 200);
+    b = map(scrollPos, 0, col.clientHeight / 2, 0.19, 0.3);
+    verticalOffset = scrollPos - col.clientHeight / 3.8;
     for (let i = 0; i < n; i++) {
         x = pts[i][0];
         y = pts[i][1];
@@ -60,12 +61,32 @@ function draw() {
         pts[i][1] = y;
         pts[i][2] = z;
 
-        fill(255, 255, 255);
+        sx = map(x, -3, 3, w * attractorScale, w * -1 * attractorScale);
+        sy = map(y, -3, 3, h * - 1 * attractorScale, h * attractorScale);
+        sz = map(z, -3, 3, h * 0.3, h * - 1 * attractorScale);
 
-        let sx = map(x, -3, 3, w * attractorScale, w * -1 * attractorScale);
-        let sy = map(y, -3, 3, h * - 1 * attractorScale, h * attractorScale);
-        let sz = map(z, -3, 3, h * 0.3, h * - 1 * attractorScale);
+        // // blur effect disabled due to performance issues
 
+        // horizontalOffsetMapped = map(scrollPos, 0, col.clientHeight / 5, 8, 0)
+        // if (horizontalOffsetMapped < 0) {
+        //     horizontalOffsetMapped = 0;
+        // }
+
+        // // red particles
+        // stroke(255, 0, 0);
+        // strokeWeight(2);
+        // beginShape(POINTS);
+        // vertex(sx - horizontalOffsetMapped, sy + verticalOffset, sz);
+        // endShape();
+
+        // // blue particles
+        // stroke(0, 255, 255);
+        // strokeWeight(2);
+        // beginShape(POINTS);
+        // vertex(sx + horizontalOffsetMapped, sy + verticalOffset, sz);
+        // endShape();
+
+        // white particles
         stroke(255);
         strokeWeight(2);
         beginShape(POINTS);

@@ -25,3 +25,8 @@ h1,
     padding-top: 0px;
     font-size: xx-large;
 }
+
+#attractorDiv {
+    width: 100vw;
+    height: 200vh;
+}
