@@ -17,7 +17,6 @@ let colFix = 15;
 let attractorScale = 0.3;
 
 let scrollPos = 0;
-let height = 1500;
 
 let horizontalOffset = 10;
 

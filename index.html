@@ -9,6 +9,7 @@
     <!-- Bootstrap JS (optional, for components such as modals) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@100..900&display=swap" rel="stylesheet">
@@ -29,10 +30,12 @@
     <div class="bg-black text-white" id="attractorDiv"></div>
     <div class="container-fluid bg-white">
         <div class="container-lg">
-            <div class="row">
-                <div class="col-12">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-9">
                     <h1>Chaos Grains</h1>
-                    <p>Chaos Grains is a Digital Music Instrument (DMI) made as part of the Interactive Digital Multimedia Techniques module at Queen Mary, University of London. The instrument explores the idea of creating music with chaos. A plasma ball interface is used to control the parameters of a chaos attractor implemented in Max MSP, which is then used as an oscillator to generate sound, an effects modulator, and to control a granular engine.</p>
+                    <p>Chaos Grains is a Digital Music Instrument (DMI) made as part of the Interactive Digital Multimedia Techniques module at Queen Mary University of London. The instrument explores the idea of creating music with chaos. A plasma ball interface is used to control the parameters of a chaos attractor implemented in Max MSP, which is then used as an oscillator to generate sound, an effects modulator, and to control a granular engine. Chaos Grains was performed at the C4DM Performance Lab at Queen Mary University of London on Decemeber 9 2025, along with Alexander Jolley's ResoBox as a duo.</p>
+                    <!-- TODO: performance video here -->
+                    <!-- TODO: demo video here -->
 
                     <h1>Context, Concept and Aims</h1>
                     <p>At the heart of the instrument is a chaos attractor. Chaos attractors are a set of states in a chaotic system that the system's trajectory will stay within. The system's overall behaviour remains within a predictable shape, but the exact path taken is unpredictable over the long term. One famous example of a chaos attractor is the Lorenz attractor, developed to understand atmospheric convection, and is also often associated with the idea of the butterfly effect. Apart from modelling physical behaviour, chaos attractors can also be utilized in musical applications by introducing controlled chaos. </p>
@@ -43,31 +46,62 @@
                     <h1>Design Process, Technical and Creative Details</h1>
                     <h2>Sound Synthesis With Chaos Attractor</h2>
                     <p>To start off the project, I implemented the Thomas attractor in Max MSP using gen~ following <a target="_blank" href="https://youtu.be/EwunJYwxNcs?si=UZiZ7K9q_zJfMeGQ">this tutorial</a> by Umut Eldem (2023). The exact differential equations for the Thomas attractor can be found <a target="_blank" href="https://en.wikipedia.org/wiki/Thomas%27_cyclically_symmetric_attractor">here</a>. This allowed me to generate sound by patching one of the chaos attractor's x, y, or z vectors into the ezdac~ object. The pitch and timbre of the sound can be controlled by adjusting the b and dt parameters in the differential equations. The parameter dt changes how fast the particle in the chaos attractor moves, which changes the pitch, and the parameter b changes the shape of the chaos attractor, which changes both pitch and timbre. I then modified the patch to use mc.gen~ instead of gen~, with 50 channels, to generate a more interesting and textured sound. The resulting oscillator sub patch became the basis for the sound synthesis aspect of the instrument. </p>
+                    <!-- TODO: add oscillator sub patch -->
 
                     <h2>Chaos Attractor Visuals</h2>
-                    <p>Since the chaos attractor is a crucial part of the instrument, I wanted to visualize it so that I could see how the different parameters are affecting the chaos attractor, and how the shape of the chaos attractor affects the sound. This could be done by patching the vectors to the scope~ object. However, the scope~ object only allows two inputs and therefore was not able to visualize the entire chaos attractor in three dimensions. To solve this issue, I used Jitter, specifically jit.gen, to implement the visuals in three dimensions using the same b and dt parameters that are being fed into the mc.gen~ object. </p>
+                    <p>Since the chaos attractor is a crucial part of the instrument, I wanted to visualize it so that I could see how the different parameters are affecting the chaos attractor, and how the shape of the chaos attractor affects the sound. This could be done by patching the vectors to the scope~ object. However, the scope~ object only allows two inputs and therefore was not able to visualize the entire chaos attractor in three dimensions. To solve this issue, I used Jitter, specifically jit.gen, to implement the visuals in three dimensions using the same b and dt parameters that are being fed into the mc.gen~ object. The visuals were implemented with 2500 particles to visualize the full form of the chaos attractor.</p>
 
-                    <!-- TODO: effects modulator -->
                     <h2>Modulating Effects With Chaos Attractor</h2>
-                    <p>The patch sounded a bit dry so I added two delays, the first being a modulated delay and the second one a normal delay. </p>
+                    <p>The patch sounded a bit dry so I implemented a feedback loop with two delays, the first being a modulated delay and the second a normal delay. The delay time of the first delay is being modulated by the x vector of the chaos attractor while the delay time of the second delay is set at 100ms. This creates a chorus-ish effect that changes depending on the shape of the attractor, followed by a normal delay. The whole feedback loop has a scaling factor of 0.8. </p>
 
-                    <!-- TODO: initial sketches and hardware prototype -->
-                    <h2>Initial Sketches And Hardware Prototype</h2>
-                    <p>Now that I had an interesting Max patch, I had to come up with a hardware interface to control it. This is when I came across <a target="_blank" href="https://www.youtube.com/watch?v=D7n-BYKB0is">this video</a> by Carl Hudson (2012) where they use a plasma ball to send MIDI data to a Prophet 8 synthesizer and control its filter. </p>
+                    <h2>Hardware Interface</h2>
+                    <p>Now that I had an interesting sounding Max patch, I had to come up with a hardware interface to control it. This is when I came across <a target="_blank" href="https://www.youtube.com/watch?v=D7n-BYKB0is">this video</a> by Carl Hudson (2012), where they use a plasma ball to send MIDI data to a Prophet 8 synthesizer. Not only is the plasma globe a chaotic object, which fits with the main idea of the project, it can also be manipulated in a somewhat controllable manner through touch. The aesthetics of the plasma globe also complement the sci-fi futuristic aesthetic of the visuals very well.</p>
+                    <!-- TODO: add initial sketches -->
+                    <p> I had a few ideas on how to detect the changes in the plasma ball, as described in the initial sketches above. Hudson (2012) also used light sensors, specifically Light Dependent Resistors (LDR) to detect changes in the light emitted from the plasma globe. However, I opted to detect its electromagnetic (EM) interference instead. This would allow for a relatively consistent instrument regardless of the lighting of the location the instrument is being played in. It will also be able to pick up more intricate changes in the plasma globe compared to the LDR sensor.</p>
 
-                    <!-- TODO: limitations of first prototype -->
-                    <!-- TODO: granular engine -->
-                    <!-- TODO: building the final physical instrument -->
-                    <!-- TODO: final tweaks before performance -->
+                    <h2>First Prototype And Limitations</h2>
+                    <!-- TODO: add first prototype diagrams-->
+                    <p>The first prototype uses an AM radio to detect EM interference from the plasma globe, as inspired by <a target="_blank" href="https://www.youtube.com/watch?v=heCOG1Haobk">this video</a> by Plasma Channel and Keystone Science. The audio output of the AM radio is then sent into a Focusrite Solo and further processed in Max MSP. The Max patch was modified such that the audio signal from the AM radio controls the dt parameter of the chaos attractor. In the prototype, the dry signal from the AM radio is also sent into the feedback loop as added texture.</p>
+                    <!-- TODO: add video maybe -->
+                    <p>The prototype had a few short-comings. First, the AM radio had to be set to an empty AM channel in order to pick up the EM interference. However, this changes depending on the location and time of day so you would likely have to recalibrate it every time you use the instrument. Sometimes the AM radio would start picking up a nearby radio channel even after it has been calibrated to an empty channel. Second, it was not as responsive as I wanted it to be. There was a delay between when I touch the globe and when the signal reaches the Max patch. It was clear that I needed a different way to pick up EM interference. Third, there was no way to adjust the b parameter of the chaos attractor so the chaos attractor stays at the same shape. I needed to figure out more ways to control the instrument.</p>
+
+                    <h2>Improved Prototype</h2>
+                    <p>Two main changes were made to solve the issues described above. The AM radio was replaced by a coil pickup to reliably pick up EM vibrations from the plasma globe. This was inspired by "circuit sniffing", introduced in the DIY aesthetics lecture of the IDMT module, where an inductive pickup is used to pick up the sound of EM vibrations. Not only was the coil pickup able to detect when I touch and release the plasma globe, the output signal also got louder as I brought the pickup closer to the plasma globe, and quieter as I moved it away from the plasma globe. This was incorporated into the instrument as a way to add dynamic and expressive playing. The second main change was the added ultrasonic sensor. This allowed me to detect my hand's height when touching the plasma ball and use it as an input to adjust the b parameter of the chaos attractor. The higher my hand is, the higher the b parameter is, and vice versa. The ultrasonic sensor is connected to an Arduino UNO R4 WiFi, which sends serial data to the max patch. </p>
+                    <!-- TODO: mention box and one knob readings to justify less sensors -->
+                    <!-- TODO: add circuit diagram? -->
+
+                    <h2>Granular Engine</h2>
+                    <!-- TODO: -->
+                    <p></p>
+
+                    <h2>Building The Final Physical Instrument</h2>
+                    <p>To finish off the hardware, I wanted to build a box to house the Arduino and the ultrasonic sensor. This would allow for a slightly quicker and more consistent setup, as I can instantly line up the sensor by pressing the box against the base of the plasma globe. Previously, I had to position the sensor at just the right spot, otherwise, the sensor would detect the side of the plasma globe instead of my hand. I began by taking measurements of the hardware in the layout I wanted them to be in, then designed the box using <a target="_blank" href="https://www.makercase.com/">Makercase</a> and <a target="_blank" href="https://www.affinity.studio/">Affinity</a>. With the help of Geetha Bommireddy, our Materials Lab Technician, I created the panels of the box using laser cutting and glued the panels together using wood glue. As a final touch, I added a sticker I got from <a target="_blank" href="https://audio.dev/conference/">ADC25</a> to the front of the box.</p>
+                    <!-- TODO: add pictures -->
+
+                    <h2>Final Tweaks Before Performance</h2>
+                    <p> In the final days of building my instruent, my Max patch has become quite messy. To remove some of the clutter when performing the instrument, I created a presentation mode layout to quickly setup the instrument (set and open ports, toggle visuals, audio and fullscreen visuals), monitor parameters and oscilloscopes, and adjust oscillator, granulator and master volumes.</p>
+                    <p>Due to the collaborative nature of the performance, we wanted Alex's instrument to be able to interact with the visuals as well. Alex suggested implementing an Anaglyph 3D effect on the visuals that intensifies as he opens the lid of his ResoBox. We implemented this by sending the distance value from his Max patch to mine through Open Sound Control. In my Max patch, I duplicated the chaos attractor visuals twice, one in red and one in cyan, then used the distance value from Alex's Max patch to scale the horizontal offset of the two duplicate visuals. </p>
+
+                    <!-- TODO: add final visuals sub patch -->
+                    <!-- TODO: add final GUI -->
 
 
                     <h1>Reflection And Future Directions</h1>
-                    <p></p>
+                    <p> Overall, I am happy with how Chaos Grains turned out. While it was not able to fully achieve its initial aim, building and designing the instrument has been a great learning experience. A big part of the design process was balancing chaos and control. How do I maintain control and responsiveness in an instrument that is supposed to be chaotic? <!-- TODO: finish this part -->
+                        Another creative skill I developed is knowing when to pivot when an initial idea isn't quite working out. As mentioned by Lecturer Charalampos Saitis in our presentation feedback, having a plan B is important, and my plan B became implementing the granular engine instead of implementing the chaos attractor as a compositional tool. Finally, the main technical skills I learned throughout this project was Max MSP and Jitter. Having no experience in Max MSP and Jitter before the module, I spent a lot of time diving into both of them to create the sounds and visuals.</p>
+
+                    <p> In terms of future directions, there were a lot of ideas I didn't end up implementing due to either budget or time constraints. Given that the chaos attractor was in three dimensions, it seemed like a perfect opportunity to apply it to spatial audio, as suggested by Lecturer Charalampos Saitis. However, this was not explored due to time constraints. Chaos Grains explores specifically the Thomas attractor. However, there are many other chaos attractors out there, some with more adjustable parameters that can open up more possibilities for different sounds and shapes. Another aspect that could be improved upon is being able to control the volumes of the oscillator and the granular engine for a more varied performance. For example, I could start the performance with just the oscillator then slowly introduce the granular sounds throughout the performance. Currently, this can be done in the Max patch but not through the instrument itself.
+                    </p>
                 </div>
             </div>
         </div>
+        <div class="py-4"></div>
     </div>
-    </div>
+    <footer class="bg-black text-light text-center">
+        <a target="_blank" href="https://www.linkedin.com/in/adrian-lam-364492198/" class="text-light"><i class="fab fa-linkedin fa-2x mx-2 my-3"></i></a>
+        <a target="_blank" href="https://github.com/adrian-1219" class="text-light"><i class="fab fa-github fa-2x mx-2"></i></a>
+        <p>© 2025 Adrian Lam</p>
+    </footer>
 
     <script src="attractor.js"></script>
 </body>
