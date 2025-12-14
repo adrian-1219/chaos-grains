@@ -95,7 +95,7 @@
 
                     <h1>Design Process, Technical and Creative Details</h1>
                     <h2>Overview</h2>
-                    <p>The final instrument was built using Max MSP (sound), Jitter (visuals), Arduino UNO, an ultrasonic sensor, a plasma globe, and a pickup coil. The performer holds the pickup coil in one hand, bringing it closer or farther away from the plasma globe to pick up electromagnetic interference of varying intensities. The detected signal is then sent to Max MSP to control the dt parameter of the chaos attractor. With the other hand, the performer can control the b parameter of the chaos attractor by the height of their hand, and further interact with the plasma ball by tapping or holding it. The height of the hand is detected by the ultrasonic sensor and the distance value is sent to Max MSP through the Arduino. The dt and b parameters are used to control a chaos attractor implemented in Max MSP and Jitter, which controls the sounds and the visuals, with the help of the grainflow package for granular sounds. Early iterations of the physical instrument used an AM radio to pick up electromagnetic interference. However, it was inconsistent, required constant recalibration, and was eventually replaced by the pickup coil. Finally, a wooden box was built to house the Arduino and the ultrasonic sensor.</p>
+                    <p>The final instrument was built using Max MSP (sound), Jitter (visuals), Arduino UNO, an ultrasonic sensor, a plasma globe, and a pickup coil. The performer holds the pickup coil in one hand, bringing it closer or farther away from the plasma globe to pick up electromagnetic interference of varying intensities. The detected signal is then sent to Max MSP to control the dt parameter of the chaos attractor. With the other hand, the performer can control the b parameter of the chaos attractor by the height of their hand, and further interact with the plasma ball by tapping or holding it. The height of the hand is detected by the ultrasonic sensor and the distance value is sent to Max MSP through the Arduino. The dt and b parameters are used to control a chaos attractor implemented in Max MSP and Jitter, which controls the sounds and the visuals, with the help of the grainflow package for granular sounds. Early iterations of the physical instrument used an AM radio to pick up electromagnetic interference. However, it was inconsistent, required constant recalibration, and was eventually replaced by the pickup coil. Finally, a wooden box was built to house the Arduino and the ultrasonic sensor. The final code used for the performance can be found <a target="_blank" href="https://github.com/adrian-1219/chaos-grains/tree/main/code">here</a></p>
 
                     <div class="container-fluid bg-white py-3">
                         <div class="row justify-content-center align-items-center">
@@ -188,7 +188,7 @@
                                 <figure class="figure">
                                     <img src="assets/circuit-sniffing.jpg" class="figure-img img-fluid" alt="Image of circuit sniffing.">
                                     <figcaption class="figure-caption text-center">
-                                        Still from <a target="_blank" href="https://www.youtube.com/watch?v=4T7qkYY7LZM">this video</a> of circuit sniffing shown in lecture.
+                                        Still from <a target="_blank" href="https://www.youtube.com/watch?v=4T7qkYY7LZM">this video</a> (siliconluthier, 2010) of circuit sniffing shown in lecture.
                                     </figcaption>
                                 </figure>
                             </div>
@@ -255,6 +255,18 @@
 
                     <p> In terms of future directions, there were a lot of ideas I didn't end up implementing due to either budget or time constraints. Given that the chaos attractor was in three dimensions, it seemed like a perfect opportunity to apply it to spatial audio, as suggested by Lecturer Charalampos Saitis. However, this was not explored due to time constraints. Chaos Grains explores specifically the Thomas attractor. However, there are many other chaos attractors out there, some with more adjustable parameters that can open up more possibilities for different sounds and shapes. Another aspect that could be improved upon is being able to control the volumes of the oscillator and the granular engine for a more varied performance. For example, I could start the performance with just the oscillator then slowly introduce the granular sounds throughout the performance. Currently, this can be done in the Max patch but not through the instrument itself.
                     </p>
+
+                    <h1>References</h1>
+                    Bidlack, R. (1992). Chaotic Systems as Simple (But Complex) Compositional Algorithms. Computer Music Journal, 16(3), 33–47. https://doi.org/10.2307/3680849 <br><br>
+                    Carl Hudson (Director). (2012, October 20). Plasma Ball MIDI controller with Prophet 08 [Video recording]. https://www.youtube.com/watch?v=D7n-BYKB0is<br><br>
+                    Choi, I. (1997). A chaotic oscillator as a musical signal generator in an interactive performance system. Journal of New Music Research, 26(1), 17–47. https://doi.org/10.1080/09298219708570715<br><br>
+                    Franklin, A. (2024). Chaotic Systems as 3D Height Maps for Sound Synthesis. 2nd Audiovisual Symposium 2024 December 6, 2024, Dalarna Audiovisual Academy (DAVA), Dalarna University, Falun, Sweden. https://urn.kb.se/resolve?urn=urn:nbn:se:mdh:diva-70386<br><br>
+                    Hearing Glass, Umut Eldem (Director). (2023, August 4). Chaotic Sounds—Max/MSP Tutorial [Video recording]. https://www.youtube.com/watch?v=EwunJYwxNcs<br><br>
+                    Plasma Channel (Director). (2017, August 7). DIY Plasma Ball Theremin! ( Ft. Keystone Science) [Video recording]. https://www.youtube.com/watch?v=heCOG1Haobk<br><br>
+                    Rizzuti, C. (2007, July 11). Mapping Chaotic Dynamical Systems Into Timbre Evolution. 4th Sound and Music Computing Conference (SMC2007). Zenodo. https://doi.org/10.5281/zenodo.849375<br><br>
+                    siliconluthier (Director). (2010, May 10). Hack of the Month Club -- Project #1: Circuit Sniffing [Video recording]. https://www.youtube.com/watch?v=4T7qkYY7LZM<br><br>
+                    Zappi, V., & McPherson, A. (2014, June 1). Dimensionality And Appropriation In Digital Musical Instrument Design. https://doi.org/10.5281/ZENODO.1178993<br><br>
+
                 </div>
             </div>
         </div>
