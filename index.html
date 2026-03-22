@@ -33,13 +33,15 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-9">
                     <h1>Chaos Grains</h1>
-                    <p>Chaos Grains is a Digital Music Instrument (DMI) made as part of the Interactive Digital Multimedia Techniques module at Queen Mary University of London. The instrument explores the idea of creating music with chaos. A plasma ball interface is used to control the parameters of a chaos attractor implemented in Max MSP, which is then used as an oscillator to generate sound, an effects modulator, and to control a granular engine. Chaos Grains was performed at the C4DM Performance Lab at Queen Mary University of London on Decemeber 9 2025, along with Alex Jolley's ResoBox as a duo.</p>
+                    <p>Chaos Grains is a Digital Musical Instrument (DMI) made as part of the Interactive Digital Multimedia Techniques module at Queen Mary University of London. The instrument explores the idea of creating music with chaos. A plasma ball interface is used to control the parameters of a chaos attractor implemented in Max MSP, which is then used as an oscillator to generate sound, an effects modulator, and to control a granular engine. </p>
 
                     <h2>Performance</h2>
+                    <p>Chaos Grains was performed at the C4DM Performance Lab at Queen Mary University of London on Decemeber 9 2025, along with Alex Jolley's ResoBox as a duo.</p>
                     <div class="ratio ratio-16x9">
                         <iframe class="py-3" width="100%" src="https://www.youtube.com/embed/dvQ8ZQ09DsE" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                     <h2>Demo</h2>
+                    <p>This video demonstrates Chaos Grains' capabilities and how different hand movements control the chaos attractor.</p>
                     <div class="ratio ratio-16x9">
                         <iframe class="py-3" width="100%" src="https://www.youtube.com/embed/jZxNsFzeyug" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
@@ -117,7 +119,7 @@
                         <div class="row justify-content-center align-items-center">
                             <div class="col-12">
                                 <figure class="figure">
-                                    <img src="assets/attractor-signal-max.png" class="figure-img img-fluid" alt="Max MSP subpatch of chaos attractor sound synthesizer.">
+                                    <img src="assets/attractor-signal-max-v2.png" class="figure-img img-fluid" alt="Max MSP subpatch of chaos attractor sound synthesizer.">
                                     <figcaption class="figure-caption text-center">
                                         Max MSP subpatch of chaos attractor sound synthesizer.
                                     </figcaption>
@@ -147,7 +149,7 @@
 
                     <h2>Hardware Interface</h2>
                     <p>Now that I had an interesting sounding Max patch, I had to come up with a hardware interface to control it. This is when I came across <a target="_blank" href="https://www.youtube.com/watch?v=D7n-BYKB0is">this video</a> by Carl Hudson (2012), where they use a plasma ball to send MIDI data to a Prophet 8 synthesizer. Not only is the plasma globe a chaotic object, which fits with the main idea of the project, it can also be manipulated in a somewhat controllable manner through touch. The aesthetics of the plasma globe also complement the sci-fi futuristic aesthetic of the visuals very well.</p>
-                    <!-- TODO: add initial sketches -->
+
                     <div class="container-fluid bg-white py-3">
                         <div class="row justify-content-center align-items-center">
                             <div class="col-12">
@@ -209,23 +211,22 @@
                     <p>After rounds of experimentation using the chaos attractor as a compositional tool, I struggled to find a mapping that I was satisfied with. This led me to use the chaos attractor to control a granular engine instead. The visuals also looked like grains so I figured it would be a good fit aesthetically as well. At first, I tried to create my own granular engine in Max MSP with the help of the example granulator patch provided in the IDMT lecture Max: Audio buffers, granular synthesis, OSC. However, I was unable to get it to work properly and ended up using the Max package <a target="_blank" href="https://cycling74.com/packages/grainflow"> grainflow </a> instead. My first iteration of the implementation had the x vector of the chaos attractor controlling the position of the grains, the y vector controlling the pitch, and the z vector controlling the density. One issue I noticed is that the shape of the chaos attractor did not affect the output of the granular synth much. Just using one vector of the chaos attractor was not enough to capture the full shape of the chaos attractor. Therefore, I added up all three vectors and used the resulting sum to control the position of the grains instead. This made a noticeable difference and the shape of the chaos attractor now impacts the generated granular sounds. The granular sounds are also sent to the feedback loop mentioned earlier.</p>
 
                     <h2>Building The Final Physical Instrument</h2>
-                    <p>To finish off the hardware, I wanted to build a box to house the Arduino and the ultrasonic sensor. This would allow for a slightly quicker and more consistent setup, as I can instantly line up the sensor by pressing the box against the base of the plasma globe. Previously, I had to position the sensor at just the right spot, otherwise, the sensor would detect the side of the plasma globe instead of my hand. I began by taking measurements of the hardware in the layout I wanted them to be in, then designed the box using <a target="_blank" href="https://www.makercase.com/">Makercase</a> and <a target="_blank" href="https://www.affinity.studio/">Affinity</a>. With the help of Geetha Bommireddy, our Materials Lab Technician, I created the panels of the box using laser cutting and glued the panels together with wood glue. As a final touch, I added a sticker I got from <a target="_blank" href="https://audio.dev/conference/">ADC25</a> to the front of the box.</p>
+                    <p>To finish off the hardware, I wanted to build a box to house the Arduino and the ultrasonic sensor. This would allow for a slightly quicker and more consistent setup, as I can instantly line up the sensor by pressing the box against the base of the plasma globe. Previously, I had to position the sensor at just the right spot, otherwise, the sensor would detect the side of the plasma globe instead of my hand. I began by taking measurements of the hardware in the layout I wanted them to be in, then designed the box using <a target="_blank" href="https://www.makercase.com/">Makercase</a> and <a target="_blank" href="https://www.affinity.studio/">Affinity</a>. The exact Affinity file used can be found in the extras folder of the GitHub repository. With the help of Geetha Bommireddy, our Materials Lab Technician, I created the panels of the box using laser cutting and glued the panels together with wood glue. As a final touch, I added a sticker I got from <a target="_blank" href="https://audio.dev/conference/">ADC25</a> to the front of the box.</p>
                     <div class="container-fluid bg-white py-3">
                         <div class="row justify-content-center align-items-center">
+                            <div class="col-12 col-md-7">
+                                <figure class="figure">
+                                    <img src="assets/boxv1.png" class="figure-img img-fluid" alt="Picture of the final physical instrument.">
+                                    <figcaption class="figure-caption text-center">
+                                        Template of the wooden box.
+                                    </figcaption>
+                                </figure>
+                            </div>
                             <div class="col-12 col-md-5">
                                 <figure class="figure">
                                     <img src="assets/box-with-components.jpeg" class="figure-img img-fluid" alt="Image of wooden box with components inside.">
                                     <figcaption class="figure-caption text-center">
                                         Final wooden box with the components inside.
-                                    </figcaption>
-                                </figure>
-                            </div>
-                            <!-- TODO: add picture of final instrument -->
-                            <div class="col-12 col-md-7">
-                                <figure class="figure">
-                                    <img src="assets/final-physical-instrument2.png" class="figure-img img-fluid" alt="Picture of the final physical instrument.">
-                                    <figcaption class="figure-caption text-center">
-                                        Picture of the final physical instrument.
                                     </figcaption>
                                 </figure>
                             </div>
